@@ -1,17 +1,17 @@
 #include <Servo.h>
 
-// Pin definitions
+
 #define TRIG_PIN 7
 #define ECHO_PIN 6
 #define SERVO_PIN 9
 
-Servo Servo; // Servo object named "Servo"
+Servo Servo; 
 
 void setup() {
   pinMode(TRIG_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
-  Servo.attach(SERVO_PIN); // Attach servo to SERVO_PIN
-  Servo.write(0);          // Gate closed
+  Servo.attach(SERVO_PIN); 
+  Servo.write(0);          
   Serial.begin(9600);
 }
 
@@ -25,10 +25,10 @@ void loop() {
   long duration = pulseIn(ECHO_PIN, HIGH);
   int distance = duration * 0.034 / 2;
 
-  if (distance < 20) {       // If an object is within 20 cm
-    Servo.write(90);         // Open the gate
-    delay(3000);             // Wait for 3 seconds
-    Servo.write(0);          // Close the gate
+  if (distance < 20) {       
+    Servo.write(90);         
+    delay(3000);             
+    Servo.write(0);          
   }
   delay(500);
 }
